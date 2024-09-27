@@ -28,3 +28,31 @@ fixed_tests_False = (
     ( "spam",    "eggs"  )
 )
 """
+
+import unittest
+
+def solution(a, b):
+    return a.endswith(b)
+
+class TestSolution(unittest.TestCase):
+    
+    def test_fixed_true(self):
+        # Test cases where the function should return True
+        self.assertTrue(solution("samurai", "ai"))
+        self.assertTrue(solution("ninja", "ja"))
+        self.assertTrue(solution("sensei", "i"))
+        self.assertTrue(solution("abc", "abc"))
+        self.assertTrue(solution("abcabc", "bc"))
+        self.assertTrue(solution("fails", "ails"))
+    
+    def test_fixed_false(self):
+        # Test cases where the function should return False
+        self.assertFalse(solution("sumo", "omo"))
+        self.assertFalse(solution("samurai", "ra"))
+        self.assertFalse(solution("abc", "abcd"))
+        self.assertFalse(solution("ails", "fails"))
+        self.assertFalse(solution("this", "fails"))
+        self.assertFalse(solution("spam", "eggs"))
+
+if __name__ == '__main__':
+    unittest.main()
